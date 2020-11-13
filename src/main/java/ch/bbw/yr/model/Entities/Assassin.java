@@ -2,7 +2,7 @@
  * @Author: Yannick Ruck
  * @Date: 07/11/2020
  */
-package ch.bbw.yr.model;
+package main.java.ch.bbw.yr.model.Entities;
 
 
 import javax.persistence.*;
@@ -11,21 +11,20 @@ import javax.persistence.*;
 @Table(name="assassin")
 @NamedQuery(name="Assassin.findAll", query="SELECT e FROM Assassin e")
 public class Assassin {
-    @Id
-    @Column(name="id", unique=true)
+    @Id @GeneratedValue
+    @Column(name = "id", unique = true)
     private int id;
 
-    @Column(name="codename")
+    @Column(name = "codename")
     private String codename;
 
-    @Column(name="kills")
+    @Column(name = "kills")
     private int kills;
 
     public Assassin() {
     }
 
-    public Assassin(int id, String codename, int kills) {
-        this.id = id;
+    public Assassin(String codename, int kills) {
         this.codename = codename;
         this.kills = kills;
     }
