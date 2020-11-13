@@ -6,6 +6,7 @@ package main.java.ch.bbw.yr.model.Entities;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="assassin")
@@ -21,6 +22,9 @@ public class Assassin {
     @Column(name = "kills")
     private int kills;
 
+    @OneToMany(mappedBy = "assassin")
+    private List<Job> jobs;
+
     public Assassin() {
     }
 
@@ -31,25 +35,5 @@ public class Assassin {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getCodename() {
-        return codename;
-    }
-
-    public void setCodename(String codename) {
-        this.codename = codename;
-    }
-
-    public int getKills() {
-        return kills;
-    }
-
-    public void setKills(int kills) {
-        this.kills = kills;
     }
 }

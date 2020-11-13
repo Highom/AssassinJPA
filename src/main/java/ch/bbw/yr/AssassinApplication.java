@@ -1,6 +1,6 @@
 package main.java.ch.bbw.yr;
 
-import main.java.ch.bbw.yr.model.AssassinRepository;
+import main.java.ch.bbw.yr.model.repositories.AssassinRepository;
 import main.java.ch.bbw.yr.model.Entities.Assassin;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
