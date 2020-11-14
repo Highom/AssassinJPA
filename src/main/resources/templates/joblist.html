@@ -28,8 +28,10 @@
 			<form action="#" th:action="@{/jobs}"
 				th:object="${job}" method="post">
 				<div class="algin-top col-sm-auto">
-					<label for="assassin">Assassin:</label>
-					<input type="text" id="assassin"  />
+					<select class="form-control" th:field="${assassin.id}"  id="dropAssassin">
+						<option value="0">select Assassin</option>
+						<option th:each="assassin : ${assassins}" th:value="${assassin.id}" th:text="${assassin.codename}"></option>
+					</select>
 					<input type="submit" class="btn btn-success" value="Send.." />
 				</div>
 			</form>
