@@ -2,16 +2,16 @@
  * @Author: Yannick Ruck
  * @Date: 07/11/2020
  */
-package main.java.ch.bbw.yr.model.repositories;
+package ch.bbw.yr.repositories;
 
-import main.java.ch.bbw.yr.model.Entities.Weapon;
+import ch.bbw.yr.Entities.Target;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.List;
 
-public class WeaponRepository {
+public class TargetRepository {
     private EntityManagerFactory emFactory;
     private EntityManager em;
 
@@ -31,20 +31,20 @@ public class WeaponRepository {
         }
     }
 
-    public List<Weapon> getAllWeapons() {
-        List<Weapon> listWeapons = null;
+    public List<Target> getAllTargets() {
+        List<Target> listTargets = null;
         try {
             em.getTransaction().begin();
-            listWeapons = em.createNamedQuery("Weapon.findAll").getResultList();
+            listTargets = em.createNamedQuery("Target.findAll").getResultList();
             em.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
             em.getTransaction().rollback();
         }
-        return listWeapons;
+        return listTargets;
     }
 
-    public void createWeapon(Weapon emp) {
+    public void createTarget(Target emp) {
         try {
             em.getTransaction().begin();
             em.persist(emp);
@@ -56,24 +56,24 @@ public class WeaponRepository {
 
     }
 
-    public Weapon readWeapon(int id) {
-        Weapon Weapon = null;
+    public Target readTarget(int id) {
+        Target Target = null;
         try {
             em.getTransaction().begin();
-            Weapon = em.find(Weapon.class, id);
+            Target = em.find(Target.class, id);
         } catch (Exception e) {
             e.printStackTrace();
             em.getTransaction().rollback();
         }
-        return Weapon;
+        return Target;
     }
 
-    public void updateWeapon(Weapon emp) {
+    public void updateTarget(Target emp) {
         try {
             em.getTransaction().begin();
-            Weapon Weapon = em.find(Weapon.class, emp.getId());
-            if (Weapon != null) {
-                em.merge(Weapon);
+            Target Target = em.find(Target.class, emp.getId());
+            if (Target != null) {
+                em.merge(Target);
             }
             em.getTransaction().commit();
         } catch (Exception e) {
@@ -82,12 +82,12 @@ public class WeaponRepository {
         }
     }
 
-    public void deleteWeapon(int id) {
+    public void deleteTarget(int id) {
         try {
             em.getTransaction().begin();
-            Weapon Weapon = em.find(Weapon.class, id);
-            if (Weapon != null) {
-                em.remove(Weapon);
+            Target Target = em.find(Target.class, id);
+            if (Target != null) {
+                em.remove(Target);
             }
             em.getTransaction().commit();
         } catch (Exception e) {

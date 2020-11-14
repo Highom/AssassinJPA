@@ -2,16 +2,17 @@
  * @Author: Yannick Ruck
  * @Date: 07/11/2020
  */
-package main.java.ch.bbw.yr.model.repositories;
+package ch.bbw.yr.repositories;
 
-import main.java.ch.bbw.yr.model.Entities.Job;
+
+import ch.bbw.yr.Entities.Assassin;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.List;
 
-public class JobRepository {
+public class AssassinRepository {
     private EntityManagerFactory emFactory;
     private EntityManager em;
 
@@ -31,20 +32,20 @@ public class JobRepository {
         }
     }
 
-    public List<Job> getAllJobs() {
-        List<Job> listJobs = null;
+    public List<Assassin> getAllAssassins() {
+        List<Assassin> listAssassins = null;
         try {
             em.getTransaction().begin();
-            listJobs = em.createNamedQuery("Job.findAll").getResultList();
+            listAssassins = em.createNamedQuery("Assassin.findAll").getResultList();
             em.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
             em.getTransaction().rollback();
         }
-        return listJobs;
+        return listAssassins;
     }
 
-    public void createJob(Job emp) {
+    public void createAssassin(Assassin emp) {
         try {
             em.getTransaction().begin();
             em.persist(emp);
@@ -56,24 +57,24 @@ public class JobRepository {
 
     }
 
-    public Job readJob(int id) {
-        Job Job = null;
+    public Assassin readAssassin(int id) {
+        Assassin Assassin = null;
         try {
             em.getTransaction().begin();
-            Job = em.find(Job.class, id);
+            Assassin = em.find(Assassin.class, id);
         } catch (Exception e) {
             e.printStackTrace();
             em.getTransaction().rollback();
         }
-        return Job;
+        return Assassin;
     }
 
-    public void updateJob(Job emp) {
+    public void updateAssassin(Assassin emp) {
         try {
             em.getTransaction().begin();
-            Job Job = em.find(Job.class, emp.getId());
-            if (Job != null) {
-                em.merge(Job);
+            Assassin Assassin = em.find(Assassin.class, emp.getId());
+            if (Assassin != null) {
+                em.merge(Assassin);
             }
             em.getTransaction().commit();
         } catch (Exception e) {
@@ -82,12 +83,12 @@ public class JobRepository {
         }
     }
 
-    public void deleteJob(int id) {
+    public void deleteAssassin(int id) {
         try {
             em.getTransaction().begin();
-            Job Job = em.find(Job.class, id);
-            if (Job != null) {
-                em.remove(Job);
+            Assassin Assassin = em.find(Assassin.class, id);
+            if (Assassin != null) {
+                em.remove(Assassin);
             }
             em.getTransaction().commit();
         } catch (Exception e) {

@@ -1,9 +1,9 @@
-package main.java.ch.bbw.yr;
+package ch.bbw.yr;
 
-import main.java.ch.bbw.yr.model.repositories.AssassinRepository;
-import main.java.ch.bbw.yr.model.repositories.JobRepository;
-import main.java.ch.bbw.yr.model.repositories.TargetRepository;
-import main.java.ch.bbw.yr.model.repositories.WeaponRepository;
+import ch.bbw.yr.repositories.AssassinRepository;
+import ch.bbw.yr.repositories.JobRepository;
+import ch.bbw.yr.repositories.TargetRepository;
+import ch.bbw.yr.repositories.WeaponRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

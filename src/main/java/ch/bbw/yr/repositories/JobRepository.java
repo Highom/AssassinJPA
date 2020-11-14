@@ -2,16 +2,16 @@
  * @Author: Yannick Ruck
  * @Date: 07/11/2020
  */
-package main.java.ch.bbw.yr.model.repositories;
+package ch.bbw.yr.repositories;
 
-import main.java.ch.bbw.yr.model.Entities.Target;
+import ch.bbw.yr.Entities.Job;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.List;
 
-public class TargetRepository {
+public class JobRepository {
     private EntityManagerFactory emFactory;
     private EntityManager em;
 
@@ -31,20 +31,20 @@ public class TargetRepository {
         }
     }
 
-    public List<Target> getAllTargets() {
-        List<Target> listTargets = null;
+    public List<Job> getAllJobs() {
+        List<Job> listJobs = null;
         try {
             em.getTransaction().begin();
-            listTargets = em.createNamedQuery("Target.findAll").getResultList();
+            listJobs = em.createNamedQuery("Job.findAll").getResultList();
             em.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
             em.getTransaction().rollback();
         }
-        return listTargets;
+        return listJobs;
     }
 
-    public void createTarget(Target emp) {
+    public void createJob(Job emp) {
         try {
             em.getTransaction().begin();
             em.persist(emp);
@@ -56,24 +56,24 @@ public class TargetRepository {
 
     }
 
-    public Target readTarget(int id) {
-        Target Target = null;
+    public Job readJob(int id) {
+        Job Job = null;
         try {
             em.getTransaction().begin();
-            Target = em.find(Target.class, id);
+            Job = em.find(Job.class, id);
         } catch (Exception e) {
             e.printStackTrace();
             em.getTransaction().rollback();
         }
-        return Target;
+        return Job;
     }
 
-    public void updateTarget(Target emp) {
+    public void updateJob(Job emp) {
         try {
             em.getTransaction().begin();
-            Target Target = em.find(Target.class, emp.getId());
-            if (Target != null) {
-                em.merge(Target);
+            Job Job = em.find(Job.class, emp.getId());
+            if (Job != null) {
+                em.merge(Job);
             }
             em.getTransaction().commit();
         } catch (Exception e) {
@@ -82,12 +82,12 @@ public class TargetRepository {
         }
     }
 
-    public void deleteTarget(int id) {
+    public void deleteJob(int id) {
         try {
             em.getTransaction().begin();
-            Target Target = em.find(Target.class, id);
-            if (Target != null) {
-                em.remove(Target);
+            Job Job = em.find(Job.class, id);
+            if (Job != null) {
+                em.remove(Job);
             }
             em.getTransaction().commit();
         } catch (Exception e) {
