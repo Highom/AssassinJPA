@@ -7,8 +7,8 @@ package main.java.ch.bbw.yr.model.Entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "weapons")
-@NamedQuery(name = "Weapons.findall", query = "SELECT e FROM Weapons e")
+@Table(name = "weapon")
+@NamedQuery(name = "Weapon.findall", query = "SELECT e FROM Weapon e")
 public class Weapon {
     @Id @GeneratedValue
     @Column(name = "id", unique = true)

@@ -1,0 +1,18 @@
+nav , body , .table{
+    background-color: #1b262c;
+    color:#bbe1fa;
+}
+
+.jumbotron {
+    background-color: #0f4c75;
+}
+
+a {
+    color: #2fa1df;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
