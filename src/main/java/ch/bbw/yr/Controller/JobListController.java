@@ -8,6 +8,7 @@ import ch.bbw.yr.Entities.Assassin;
 import ch.bbw.yr.Entities.Job;
 import ch.bbw.yr.Entities.Target;
 import ch.bbw.yr.Entities.Weapon;
+import ch.bbw.yr.FormObjects.JobForm;
 import ch.bbw.yr.repositories.AssassinRepository;
 import ch.bbw.yr.repositories.JobRepository;
 import ch.bbw.yr.repositories.TargetRepository;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/jobs")
@@ -36,6 +38,9 @@ public class JobListController {
         List<Target> targets = targetRepository.getAllTargets();
         List<Weapon> weapons = weaponRepository.getAllWeapons();
 
+        Job job = new Job();
+
+        model.addAttribute("job", job);
         model.addAttribute("assassins", assassins);
         model.addAttribute("jobs", jobs );
         model.addAttribute("targets", targets );
@@ -44,7 +49,13 @@ public class JobListController {
     }
 
     @PostMapping
-    public void createJob(@RequestBody Job job){
+    public void createJob(@RequestBody JobForm formResult){
+        Job job = new Job();
+
+        job.setAssassin(assassinRepository.readAssassin(formResult.getAssassin()));
+        job.setTarget(targetRepository.readTarget(formResult.getTarget()));
+        job.setWeaponsUsed(formResult.getWeaponsUsed().stream().map(w -> weaponRepository.readWeapon(w)).collect(Collectors.toList()));
+
         jobRepository.createJob(job);
 
         jobRepository.closeup();
