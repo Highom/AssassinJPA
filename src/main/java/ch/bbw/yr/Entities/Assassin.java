@@ -36,4 +36,8 @@ public class Assassin {
     public int getId() {
         return id;
     }
+
+    public String getCodename() {
+        return codename;
+    }
 }

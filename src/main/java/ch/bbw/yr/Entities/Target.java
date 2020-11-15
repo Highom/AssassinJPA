@@ -32,4 +32,12 @@ public class Target {
     public int getId() {
         return id;
     }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
 }

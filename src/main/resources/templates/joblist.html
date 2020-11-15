@@ -27,12 +27,30 @@
 			<h4>Add Job</h4>
 			<form action="#" th:action="@{/jobs}"
 				th:object="${job}" method="post">
-				<div class="algin-top col-sm-auto">
-					<select class="form-control" th:field="${assassin.id}"  id="dropAssassin">
+				<div class="align-top col-sm-auto">
+					<label for="dropAssassin">Assassin:</label> <br />
+					<select class="form-control" th:field="*{assassin}" id="dropAssassin">
 						<option value="0">select Assassin</option>
-						<option th:each="assassin : ${assassins}" th:value="${assassin.id}" th:text="${assassin.codename}"></option>
+						<option th:each="assassin : ${assassins}" th:value="${assassin.id}" th:text="${assassin.getCodename()}"></option>
 					</select>
+					<label for="dropTarget">Target:</label> <br />
+					<select class="form-control" th:field="*{target}" id="dropTarget">
+						<option value="0">select Target</option>
+						<option th:each="target : ${targets}" th:value="${target.id}" th:text="${target.getFirstname() + ' ' + target.getLastname()}"></option>
+					</select>
+					<div class="checkbox checkbox-custom checkbox-circle">
+						<h4>Weapons:</h4>
+						<div th:each="weapon: ${weapons}">
+							<input
+									th:field="*{weaponsUsed}"
+									type="checkbox"
+									th:id="${weapon.getId()}"
+									th:value="${weapon.getId()}"
+							/>
+							<label th:for="${weapon.getId()}" th:text="${'Name: ' + weapon.getName() + ', Lethality: ' + weapon.getLethality()}"></label>
+						</div>
 					<input type="submit" class="btn btn-success" value="Send.." />
+					</div>
 				</div>
 			</form>
 			<footer>

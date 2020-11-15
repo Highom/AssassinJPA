@@ -15,6 +15,10 @@ public class JobRepository {
     private EntityManagerFactory emFactory;
     private EntityManager em;
 
+    public JobRepository(){
+        setup();
+    }
+
     public void setup() {
         emFactory = Persistence.createEntityManagerFactory("MyPersistenceUnit");
         em = emFactory.createEntityManager();

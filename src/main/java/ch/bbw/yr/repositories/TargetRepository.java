@@ -15,6 +15,10 @@ public class TargetRepository {
     private EntityManagerFactory emFactory;
     private EntityManager em;
 
+    public TargetRepository() {
+        setup();
+    }
+
     public void setup() {
         emFactory = Persistence.createEntityManagerFactory("MyPersistenceUnit");
         em = emFactory.createEntityManager();

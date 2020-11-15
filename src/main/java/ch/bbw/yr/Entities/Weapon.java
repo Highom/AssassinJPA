@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "weapon")
-@NamedQuery(name = "Weapon.findall", query = "SELECT e FROM Weapon e")
+@NamedQuery(name = "Weapon.findAll", query = "SELECT e FROM Weapon e")
 public class Weapon {
     @Id @GeneratedValue
     @Column(name = "id", unique = true)
@@ -30,5 +30,13 @@ public class Weapon {
 
     public int getId() {
         return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getLethality() {
+        return lethality;
     }
 }

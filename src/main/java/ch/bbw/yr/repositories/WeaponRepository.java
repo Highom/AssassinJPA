@@ -15,6 +15,10 @@ public class WeaponRepository {
     private EntityManagerFactory emFactory;
     private EntityManager em;
 
+    public WeaponRepository() {
+        setup();
+    }
+
     public void setup() {
         emFactory = Persistence.createEntityManagerFactory("MyPersistenceUnit");
         em = emFactory.createEntityManager();
