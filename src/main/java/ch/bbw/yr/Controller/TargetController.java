@@ -27,7 +27,10 @@ public class TargetController {
     List<Target> targets = targetRepository.getAllTargets();
 
     @GetMapping
-    public String requestJobList(Model model) {
+    public String requestTargetList(Model model) {
+        Target target = new Target();
+
+        model.addAttribute("target", target);
         model.addAttribute("targets", targets);
         return "target";
     }

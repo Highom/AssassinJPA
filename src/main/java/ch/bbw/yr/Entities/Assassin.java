@@ -22,9 +22,6 @@ public class Assassin {
     @Column(name = "kills")
     private int kills;
 
-    @OneToMany(mappedBy = "assassin")
-    private List<Job> jobs;
-
     public Assassin() {
     }
 
@@ -39,5 +36,9 @@ public class Assassin {
 
     public String getCodename() {
         return codename;
+    }
+
+    public int getKills() {
+        return kills;
     }
 }
