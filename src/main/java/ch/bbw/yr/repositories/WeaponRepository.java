@@ -61,23 +61,23 @@ public class WeaponRepository {
     }
 
     public Weapon readWeapon(int id) {
-        Weapon Weapon = null;
+        Weapon weapon = null;
         try {
             em.getTransaction().begin();
-            Weapon = em.find(Weapon.class, id);
+            weapon = em.find(Weapon.class, id);
         } catch (Exception e) {
             e.printStackTrace();
             em.getTransaction().rollback();
         }
-        return Weapon;
+        return weapon;
     }
 
     public void updateWeapon(Weapon emp) {
         try {
             em.getTransaction().begin();
-            Weapon Weapon = em.find(Weapon.class, emp.getId());
-            if (Weapon != null) {
-                em.merge(Weapon);
+            Weapon weapon = em.find(Weapon.class, emp.getId());
+            if (weapon != null) {
+                em.merge(weapon);
             }
             em.getTransaction().commit();
         } catch (Exception e) {
@@ -89,9 +89,9 @@ public class WeaponRepository {
     public void deleteWeapon(int id) {
         try {
             em.getTransaction().begin();
-            Weapon Weapon = em.find(Weapon.class, id);
-            if (Weapon != null) {
-                em.remove(Weapon);
+            Weapon weapon = em.find(Weapon.class, id);
+            if (weapon != null) {
+                em.remove(weapon);
             }
             em.getTransaction().commit();
         } catch (Exception e) {

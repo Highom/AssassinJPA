@@ -8,10 +8,7 @@ import ch.bbw.yr.Entities.Weapon;
 import ch.bbw.yr.repositories.WeaponRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,8 +29,12 @@ public class WeaponController {
     }
 
     @PostMapping
-    public void createWeapon(@RequestBody Weapon weapon){
+    public void createWeapon(Weapon weapon){
         weaponRepository.createWeapon(weapon);
-        weaponRepository.closeup();
+    }
+
+    @GetMapping("/delete")
+    public void deleteWeapon(@RequestParam(name = "id", required = true)int id) {
+        weaponRepository.deleteWeapon(id);
     }
 }

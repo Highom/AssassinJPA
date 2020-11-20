@@ -39,4 +39,16 @@ public class Weapon {
     public int getLethality() {
         return lethality;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLethality(int lethality) {
+        this.lethality = lethality;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }
