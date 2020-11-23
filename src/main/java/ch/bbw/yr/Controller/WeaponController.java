@@ -33,6 +33,17 @@ public class WeaponController {
         weaponRepository.createWeapon(weapon);
     }
 
+    @GetMapping("/edit")
+    public String editWeaponForm(Model model, @RequestParam(name = "id", required = true)int id) {
+        model.addAttribute("weapon",weaponRepository.readWeapon(id));
+        return "weaponEdit";
+    }
+
+    @GetMapping("/edit/post")
+    public void editWeaponPost(Weapon weapon) {
+        weaponRepository.updateWeapon(weapon);
+    }
+
     @GetMapping("/delete")
     public void deleteWeapon(@RequestParam(name = "id", required = true)int id) {
         weaponRepository.deleteWeapon(id);

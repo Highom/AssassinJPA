@@ -7,7 +7,7 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-lg">
-            <a class="navbar-brand" href="#">The Assassin Network</a>
+            <a class="navbar-brand" href="/">The Assassin Network</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -24,43 +24,16 @@
         </nav>
         <div class="p-3">
             <h4>Add Weapon</h4>
-            <form action="#" th:action="@{/weapons}"
-                  th:object="${weapon}" method="post">
+            <form action="#" th:action="@{/weapons/edit/post}"
+                  th:object="${weapon}" method="get">
                 <div class="align-top col-sm-auto">
                     <label for="name">Name:</label> <br />
-                    <input type="text" class="form-control" th:field="*{name}" id="name" />
+                    <input type="text" class="form-control" th:field="*{name}" th:value="${weapon.name}" id="name" />
                     <label for="lethality">Lethality:</label> <br />
-                    <input type="number" class="form-control" th:field="*{lethality}" id="lethality" />
+                    <input type="number" class="form-control" th:field="*{lethality}" th:value="${weapon.letality}" id="lethality" />
                     <input type="submit" class="btn btn-success" value="Send.." />
                 </div>
             </form>
-            <div class="row justify-content-center" th:switch="${weapons}">
-                <h4 th:case="null">No Weapons available yet!</h4>
-                <div>
-                    <table class="table table-striped" th:case="*">
-                        <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Lethality</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="weapon : ${weapons}">
-                            <td th:text="${weapon.name}"></td>
-                            <td th:text="${weapon.lethality}"></td>
-                            <td>
-                                <a class="btn btn-info" th:href="@{/weapons/edit?id={id}(id=${weapon.id})}">Edit</a>
-                            </td>
-                            <td>
-                                <a class="btn btn-danger" th:href="@{/weapons/delete?id={id}(id=${weapon.id})}">Delete</a>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
             <footer>
                 <p><small>© 2020 / Author: Yannick Ruck</small></p>
             </footer>
