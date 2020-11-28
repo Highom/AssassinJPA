@@ -33,11 +33,11 @@
 						<option value="0">select Assassin</option>
 						<option th:each="assassin : ${assassins}" th:value="${assassin}" th:text="${assassin.codename}"></option>
 					</select>
-<!--					<h5>Target:</h5>-->
-<!--					<label for="firstname">First Name:</label>-->
-<!--					<input type="text" class="form-control" th:field="*{target.firstname}" id="firstname" />-->
-<!--					<label for="lastname">Last Name:</label>-->
-<!--					<input type="text" class="form-control" th:field="*{target.lastname" id="lastname" />-->
+					<h5>Target:</h5>
+					<label for="firstname">First Name:</label>
+					<input type="text" class="form-control" th:field="*{target.firstname}" id="firstname" />
+					<label for="lastname">Last Name:</label>
+					<input type="text" class="form-control" th:field="*{target.lastname}" id="lastname" />
 					<div class="checkbox checkbox-custom checkbox-circle">
 						<h4>Weapons:</h4>
 						<div th:each="weapon: ${weapons}">
@@ -45,7 +45,7 @@
 									th:field="*{weaponsUsed}"
 									type="checkbox"
 									th:id="${weapon.id}"
-									th:value="${weapon.id}"
+									th:value="${weapon}"
 							/>
 							<label th:for="${weapon.id}" th:text="${'Name: ' + weapon.name + ', Lethality: ' + weapon.lethality}"></label>
 						</div>

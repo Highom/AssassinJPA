@@ -22,11 +22,9 @@ public class WeaponRepository {
     public void setup() {
         emFactory = Persistence.createEntityManagerFactory("MyPersistenceUnit");
         em = emFactory.createEntityManager();
-//        em.getTransaction().begin();
     }
 
     public void closeup() {
-//        em.getTransaction().commit();
         if ((em != null) && em.isOpen()) {
             em.close();
         }

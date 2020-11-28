@@ -32,23 +32,23 @@ public class Weapon {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int getLethality() {
-        return lethality;
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setLethality(int lethality) {
-        this.lethality = lethality;
+    public int getLethality() {
+        return lethality;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setLethality(int lethality) {
+        this.lethality = lethality;
     }
 }

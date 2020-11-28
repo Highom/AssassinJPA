@@ -40,14 +40,11 @@
                                     type="checkbox"
                                     th:id="${weapon.id}"
                                     th:value="${weapon.id}"
+                                    th:selected="(${weapon.id} == *{weapon.id})"
                             />
                             <label th:for="${weapon.id}" th:text="${'Name: ' + weapon.name + ', Lethality: ' + weapon.lethality}"></label>
                         </div>
                     </div>
-<!--                    <label for="firstname">First Name:</label> <br />-->
-<!--                    <input type="text" class="form-control" th:field="*{firstname}" th:value="${target.firstname}" id="firstname" />-->
-<!--                    <label for="lastname">Last Name:</label> <br />-->
-<!--                    <input type="text" class="form-control" th:field="*{lastname}" th:value="${target.lastname}" id="lastname" />-->
                     <input type="submit" class="btn btn-success" value="Send.." />
                 </div>
             </form>

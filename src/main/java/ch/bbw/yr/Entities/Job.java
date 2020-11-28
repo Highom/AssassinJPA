@@ -38,31 +38,31 @@ public class Job {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public Assassin getAssassin() {
         return assassin;
-    }
-
-    public Target getTarget() {
-        return target;
-    }
-
-    public List<Weapon> getWeaponsUsed() {
-        return weaponsUsed;
     }
 
     public void setAssassin(Assassin assassin) {
         this.assassin = assassin;
     }
 
+    public Target getTarget() {
+        return target;
+    }
+
     public void setTarget(Target target) {
         this.target = target;
     }
 
-    public void setWeaponsUsed(List<Weapon> weaponsUsed) {
-        this.weaponsUsed = weaponsUsed;
+    public List<Weapon> getWeaponsUsed() {
+        return weaponsUsed;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setWeaponsUsed(List<Weapon> weaponsUsed) {
+        this.weaponsUsed = weaponsUsed;
     }
 }
