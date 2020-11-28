@@ -8,10 +8,7 @@ import ch.bbw.yr.Entities.Assassin;
 import ch.bbw.yr.repositories.AssassinRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,7 +20,7 @@ public class AssassinController {
     List<Assassin> assassins = assassinRepository.getAllAssassins();
 
     @GetMapping
-    public String requestJobList(Model model) {
+    public String getAllAssassins(Model model) {
         Assassin assassin = new Assassin();
 
         model.addAttribute("assassin", assassin);
@@ -32,8 +29,28 @@ public class AssassinController {
     }
 
     @PostMapping
-    public void createAssassin(@RequestBody Assassin assassin){
+    public String createAssassin(@RequestBody Assassin assassin){
         assassinRepository.createAssassin(assassin);
         assassinRepository.closeup();
+        return  "redirect:/assassins";
+    }
+
+    @GetMapping("/edit")
+    public String editAssassinForm(Model model, @RequestParam(name = "id", required = true)int id) {
+        Object assassin = assassinRepository.readAssassin(id);
+        model.addAttribute(assassin);
+        return "assassinEdit";
+    }
+
+    @GetMapping("/edit/post")
+    public String editAssassinPost(Assassin assassin) {
+        assassinRepository.updateAssassin(assassin);
+        return  "redirect:/assassins";
+    }
+
+    @GetMapping("/delete")
+    public String deleteAssassin(@RequestParam(name = "id", required = true)int id) {
+        assassinRepository.deleteAssassin(id);
+        return  "redirect:/assassins";
     }
 }

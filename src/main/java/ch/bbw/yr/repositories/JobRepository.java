@@ -60,8 +60,8 @@ public class JobRepository {
 
     }
 
-    public Job readJob(int id) {
-        Job Job = null;
+    public Object readJob(int id) {
+        Object Job = null;
         try {
             em.getTransaction().begin();
             Job = em.find(Job.class, id);
@@ -75,7 +75,7 @@ public class JobRepository {
     public void updateJob(Job emp) {
         try {
             em.getTransaction().begin();
-            Job Job = em.find(Job.class, emp.getId());
+            Object Job = em.find(Job.class, emp.getId());
             if (Job != null) {
                 em.merge(Job);
             }
@@ -89,7 +89,7 @@ public class JobRepository {
     public void deleteJob(int id) {
         try {
             em.getTransaction().begin();
-            Job Job = em.find(Job.class, id);
+            Object Job = em.find(Job.class, id);
             if (Job != null) {
                 em.remove(Job);
             }

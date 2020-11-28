@@ -16,15 +16,15 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link " href="/jobs">Jobs</a>
-                    <a class="nav-item nav-link" href="/assassins">Assassins</a>
-                    <a class="nav-item nav-link active" href="/targets">Targets</a>
+                    <a class="nav-item nav-link" href="/jobs">Jobs</a>
+                    <a class="nav-item nav-link active" href="/assassins">Assassins</a>
+                    <a class="nav-item nav-link" href="/targets">Targets</a>
                     <a class="nav-item nav-link" href="/weapons">Weapons</a>
                 </div>
             </div>
         </nav>
         <div class="p-3">
-            <h4>Add Target</h4>
+            <h4>Add Assassin</h4>
             <form th:action="@{/assassins}"
                   th:object="${assassin}" method="post">
                 <div class="align-top col-sm-auto">
@@ -43,12 +43,20 @@
                         <tr>
                             <th>Codename</th>
                             <th>Kills</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:each="assassin : ${assassins}">
                             <td th:text="${assassin.codename}"></td>
                             <td th:text="${assassin.kills}"></td>
+                            <td>
+                                <a class="btn btn-info" th:href="@{/assassins/edit?id={id}(id=${assassin.id})}">Edit</a>
+                            </td>
+                            <td>
+                                <a class="btn btn-danger" th:href="@{/assassins/delete?id={id}(id=${assassin.id})}">Delete</a>
+                            </td>
                         </tr>
                         </tbody>
                     </table>

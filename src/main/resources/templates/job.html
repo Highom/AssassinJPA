@@ -31,23 +31,23 @@
 					<label for="dropAssassin">Assassin:</label> <br />
 					<select class="form-control" th:field="*{assassin}" id="dropAssassin">
 						<option value="0">select Assassin</option>
-						<option th:each="assassin : ${assassins}" th:value="${assassin}" th:text="${assassin.getCodename()}"></option>
+						<option th:each="assassin : ${assassins}" th:value="${assassin}" th:text="${assassin.codename}"></option>
 					</select>
-					<label for="dropTarget">Target:</label> <br />
-					<select class="form-control" th:field="*{target}" id="dropTarget">
-						<option value="0">select Target</option>
-						<option th:each="target : ${targets}" th:value="${target}" th:text="${target.getFirstname() + ' ' + target.getLastname()}"></option>
-					</select>
+<!--					<h5>Target:</h5>-->
+<!--					<label for="firstname">First Name:</label>-->
+<!--					<input type="text" class="form-control" th:field="*{target.firstname}" id="firstname" />-->
+<!--					<label for="lastname">Last Name:</label>-->
+<!--					<input type="text" class="form-control" th:field="*{target.lastname" id="lastname" />-->
 					<div class="checkbox checkbox-custom checkbox-circle">
 						<h4>Weapons:</h4>
 						<div th:each="weapon: ${weapons}">
 							<input
 									th:field="*{weaponsUsed}"
 									type="checkbox"
-									th:id="${weapon.getId()}"
-									th:value="${weapon.getId()}"
+									th:id="${weapon.id}"
+									th:value="${weapon.id}"
 							/>
-							<label th:for="${weapon.getId()}" th:text="${'Name: ' + weapon.getName() + ', Lethality: ' + weapon.getLethality()}"></label>
+							<label th:for="${weapon.id}" th:text="${'Name: ' + weapon.name + ', Lethality: ' + weapon.lethality}"></label>
 						</div>
 					<input type="submit" class="btn btn-success" value="Send.." />
 					</div>
@@ -66,7 +66,7 @@
 						</thead>
 						<tbody>
 						<tr th:each="job : ${jobs}">
-							<td th:text="${job.athlete}"></td>
+							<td th:text="${job.assasin}"></td>
 							<td th:text="${job.target}"></td>
 							<td th:text="${job.weapons}"></td>
 						</tr>

@@ -24,17 +24,6 @@
             </div>
         </nav>
         <div class="p-3">
-            <h4>Add Target</h4>
-            <form th:action="@{/targets}"
-                  th:object="${target}" method="post">
-                <div class="align-top col-sm-auto">
-                    <label for="firstname">First Name:</label> <br />
-                    <input type="text" class="form-control" th:field="*{firstname}" id="firstname" />
-                    <label for="lastname">Last Name:</label> <br />
-                    <input type="text" class="form-control" th:field="*{lastname}" id="lastname" />
-                    <input type="submit" class="btn btn-success" value="Send.." />
-                </div>
-            </form>
             <div class="row justify-content-center" th:switch="${targets}">
                 <h4 th:case="null">No Targets available yet!</h4>
                 <div>
@@ -43,12 +32,16 @@
                         <tr>
                             <th>First Name</th>
                             <th>Last Name</th>
+                            <th>Edit</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:each="target : ${targets}">
                             <td th:text="${target.firstname}"></td>
                             <td th:text="${target.lastname}"></td>
+                            <td>
+                                <a class="btn btn-info" th:href="@{/targets/edit?id={id}(id=${target.id})}">Edit</a>
+                            </td>
                         </tr>
                         </tbody>
                     </table>

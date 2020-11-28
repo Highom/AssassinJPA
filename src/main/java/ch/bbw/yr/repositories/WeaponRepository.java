@@ -60,8 +60,8 @@ public class WeaponRepository {
 
     }
 
-    public Weapon readWeapon(int id) {
-        Weapon weapon = null;
+    public Object readWeapon(int id) {
+        Object weapon = null;
         try {
             em.getTransaction().begin();
             weapon = em.find(Weapon.class, id);
@@ -75,7 +75,7 @@ public class WeaponRepository {
     public void updateWeapon(Weapon emp) {
         try {
             em.getTransaction().begin();
-            Weapon weapon = em.find(Weapon.class, emp.getId());
+            Object weapon = em.find(Weapon.class, emp.getId());
             if (weapon != null) {
                 em.merge(weapon);
             }
@@ -89,7 +89,7 @@ public class WeaponRepository {
     public void deleteWeapon(int id) {
         try {
             em.getTransaction().begin();
-            Weapon weapon = em.find(Weapon.class, id);
+            Object weapon = em.find(Weapon.class, id);
             if (weapon != null) {
                 em.remove(weapon);
             }

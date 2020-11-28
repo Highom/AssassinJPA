@@ -59,8 +59,8 @@ public class AssassinRepository {
 
     }
 
-    public Assassin readAssassin(int id) {
-        Assassin Assassin = null;
+    public Object readAssassin(int id) {
+        Object Assassin = null;
         try {
             em.getTransaction().begin();
             Assassin = em.find(Assassin.class, id);
@@ -74,7 +74,7 @@ public class AssassinRepository {
     public void updateAssassin(Assassin emp) {
         try {
             em.getTransaction().begin();
-            Assassin Assassin = em.find(Assassin.class, emp.getId());
+            Object Assassin = em.find(Assassin.class, emp.getId());
             if (Assassin != null) {
                 em.merge(Assassin);
             }
@@ -88,7 +88,7 @@ public class AssassinRepository {
     public void deleteAssassin(int id) {
         try {
             em.getTransaction().begin();
-            Assassin Assassin = em.find(Assassin.class, id);
+            Object Assassin = em.find(Assassin.class, id);
             if (Assassin != null) {
                 em.remove(Assassin);
             }

@@ -61,4 +61,8 @@ public class Job {
     public void setWeaponsUsed(List<Weapon> weaponsUsed) {
         this.weaponsUsed = weaponsUsed;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

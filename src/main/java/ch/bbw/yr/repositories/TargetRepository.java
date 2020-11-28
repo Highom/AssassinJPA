@@ -60,8 +60,8 @@ public class TargetRepository {
 
     }
 
-    public Target readTarget(int id) {
-        Target Target = null;
+    public Object readTarget(int id) {
+        Object Target = null;
         try {
             em.getTransaction().begin();
             Target = em.find(Target.class, id);
@@ -75,23 +75,9 @@ public class TargetRepository {
     public void updateTarget(Target emp) {
         try {
             em.getTransaction().begin();
-            Target Target = em.find(Target.class, emp.getId());
+            Object Target = em.find(Target.class, emp.getId());
             if (Target != null) {
                 em.merge(Target);
-            }
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            em.getTransaction().rollback();
-        }
-    }
-
-    public void deleteTarget(int id) {
-        try {
-            em.getTransaction().begin();
-            Target Target = em.find(Target.class, id);
-            if (Target != null) {
-                em.remove(Target);
             }
             em.getTransaction().commit();
         } catch (Exception e) {

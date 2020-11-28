@@ -4,18 +4,11 @@
  */
 package ch.bbw.yr.Controller;
 
-import ch.bbw.yr.Entities.Assassin;
-import ch.bbw.yr.Entities.Job;
 import ch.bbw.yr.Entities.Target;
-import ch.bbw.yr.repositories.AssassinRepository;
-import ch.bbw.yr.repositories.JobRepository;
 import ch.bbw.yr.repositories.TargetRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,7 +20,7 @@ public class TargetController {
     List<Target> targets = targetRepository.getAllTargets();
 
     @GetMapping
-    public String requestTargetList(Model model) {
+    public String getAllTargets(Model model) {
         Target target = new Target();
 
         model.addAttribute("target", target);
@@ -36,8 +29,22 @@ public class TargetController {
     }
 
     @PostMapping
-    public void createTarget(@RequestBody Target target){
+    public String createTarget(@RequestBody Target target){
         targetRepository.createTarget(target);
         targetRepository.closeup();
+        return  "redirect:/targets";
+    }
+
+    @GetMapping("/edit")
+    public String editTargetForm(Model model, @RequestParam(name = "id", required = true)int id) {
+        Object target = targetRepository.readTarget(id);
+        model.addAttribute(target);
+        return "targetEdit";
+    }
+
+    @GetMapping("/edit/post")
+    public String editWeaponPost(Target target) {
+        targetRepository.updateTarget(target);
+        return  "redirect:/targets";
     }
 }

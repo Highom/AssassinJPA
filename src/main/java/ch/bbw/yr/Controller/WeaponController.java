@@ -20,7 +20,7 @@ public class WeaponController {
     List<Weapon> weapons = weaponRepository.getAllWeapons();
 
     @GetMapping
-    public String requestJobList(Model model) {
+    public String getAllWeapons(Model model) {
         Weapon weapon = new Weapon();
 
         model.addAttribute("weapon", weapon);
@@ -29,23 +29,27 @@ public class WeaponController {
     }
 
     @PostMapping
-    public void createWeapon(Weapon weapon){
+    public String createWeapon(Weapon weapon){
         weaponRepository.createWeapon(weapon);
+        return  "redirect:/weapons";
     }
 
     @GetMapping("/edit")
     public String editWeaponForm(Model model, @RequestParam(name = "id", required = true)int id) {
-        model.addAttribute("weapon",weaponRepository.readWeapon(id));
+        Object weapon = weaponRepository.readWeapon(id);
+        model.addAttribute(weapon);
         return "weaponEdit";
     }
 
     @GetMapping("/edit/post")
-    public void editWeaponPost(Weapon weapon) {
+    public String editWeaponPost(Weapon weapon) {
         weaponRepository.updateWeapon(weapon);
+        return  "redirect:/weapons";
     }
 
     @GetMapping("/delete")
-    public void deleteWeapon(@RequestParam(name = "id", required = true)int id) {
+    public String deleteWeapon(@RequestParam(name = "id", required = true)int id) {
         weaponRepository.deleteWeapon(id);
+        return  "redirect:/weapons";
     }
 }

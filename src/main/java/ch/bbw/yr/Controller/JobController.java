@@ -14,16 +14,13 @@ import ch.bbw.yr.repositories.TargetRepository;
 import ch.bbw.yr.repositories.WeaponRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
 @RequestMapping("/jobs")
-public class JobListController {
+public class JobController {
     JobRepository jobRepository = new JobRepository();
     AssassinRepository assassinRepository = new AssassinRepository();
     TargetRepository targetRepository = new TargetRepository();
@@ -33,26 +30,41 @@ public class JobListController {
     public String requestAssassinList(Model model) {
         List<Job> jobs =  jobRepository.getAllJobs();
         List<Assassin> assassins =  assassinRepository.getAllAssassins();
-        List<Target> targets = targetRepository.getAllTargets();
         List<Weapon> weapons = weaponRepository.getAllWeapons();
 
         Job job = new Job();
+        Target target = new Target();
 
         model.addAttribute("job", job);
         model.addAttribute("assassins", assassins);
         model.addAttribute("jobs", jobs );
-        model.addAttribute("targets", targets );
+        model.addAttribute("target", target );
         model.addAttribute("weapons", weapons);
-        return "joblist";
+        return "job";
     }
 
     @PostMapping
-    public void createJob(@RequestBody Job job){
+    public String createJob(@RequestBody Job job){
         jobRepository.createJob(job);
+        return  "redirect:/jobs";
+    }
 
-        jobRepository.closeup();
-        assassinRepository.closeup();
-        targetRepository.closeup();
-        weaponRepository.closeup();
+    @GetMapping("/edit")
+    public String editJobForm(Model model, @RequestParam(name = "id", required = true)int id) {
+        Object job = jobRepository.readJob(id);
+        model.addAttribute(job);
+        return "jobEdit";
+    }
+
+    @GetMapping("/edit/post")
+    public String editJobPost(Job job) {
+        jobRepository.updateJob(job);
+        return  "redirect:/jobs";
+    }
+
+    @GetMapping("/delete")
+    public String deleteJob(@RequestParam(name = "id", required = true)int id) {
+        jobRepository.deleteJob(id);
+        return  "redirect:/jobs";
     }
 }
