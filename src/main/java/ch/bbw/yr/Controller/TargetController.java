@@ -43,8 +43,14 @@ public class TargetController {
     }
 
     @GetMapping("/edit/post")
-    public String editWeaponPost(Target target) {
+    public String editTargetPost(Target target) {
         targetRepository.updateTarget(target);
+        return  "redirect:/targets";
+    }
+
+    @GetMapping("/delete")
+    public String deleteTarget(@RequestParam(name = "id", required = true)int id) {
+        targetRepository.deleteTarget(id);
         return  "redirect:/targets";
     }
 }

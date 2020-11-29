@@ -5,6 +5,7 @@
 package ch.bbw.yr.repositories;
 
 import ch.bbw.yr.Entities.Target;
+import ch.bbw.yr.Entities.Weapon;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -78,6 +79,20 @@ public class TargetRepository {
             Object Target = em.find(Target.class, emp.getId());
             if (Target != null) {
                 em.merge(Target);
+            }
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+        }
+    }
+
+    public void deleteTarget(int id) {
+        try {
+            em.getTransaction().begin();
+            Object target = em.find(Target.class, id);
+            if (target != null) {
+                em.remove(target);
             }
             em.getTransaction().commit();
         } catch (Exception e) {

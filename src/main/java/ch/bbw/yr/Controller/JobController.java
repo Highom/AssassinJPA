@@ -6,9 +6,11 @@ package ch.bbw.yr.Controller;
 
 import ch.bbw.yr.Entities.Assassin;
 import ch.bbw.yr.Entities.Job;
+import ch.bbw.yr.Entities.Target;
 import ch.bbw.yr.Entities.Weapon;
 import ch.bbw.yr.repositories.AssassinRepository;
 import ch.bbw.yr.repositories.JobRepository;
+import ch.bbw.yr.repositories.TargetRepository;
 import ch.bbw.yr.repositories.WeaponRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,12 +24,13 @@ public class JobController {
     JobRepository jobRepository = new JobRepository();
     AssassinRepository assassinRepository = new AssassinRepository();
     WeaponRepository weaponRepository = new WeaponRepository();
-
+    TargetRepository targetRepository = new TargetRepository();
     @GetMapping
     public String requestAssassinList(Model model) {
         List<Job> jobs =  jobRepository.getAllJobs();
         List<Assassin> assassins =  assassinRepository.getAllAssassins();
         List<Weapon> weapons = weaponRepository.getAllWeapons();
+        List<Target> targets = targetRepository.getAllTargets();
 
         Job job = new Job();
 
@@ -35,6 +38,8 @@ public class JobController {
         model.addAttribute("assassins", assassins);
         model.addAttribute("jobs", jobs );
         model.addAttribute("weapons", weapons);
+        model.addAttribute("targets", targets);
+
         return "job";
     }
 

@@ -22,6 +22,10 @@ public class Assassin {
     @Column(name = "kills")
     private int kills;
 
+    @OneToMany(mappedBy = "assassin")
+    @Column(name ="jobs")
+    private List<Job> jobs;
+
     public Assassin() {
     }
 
@@ -34,11 +38,31 @@ public class Assassin {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getCodename() {
         return codename;
     }
 
+    public void setCodename(String codename) {
+        this.codename = codename;
+    }
+
     public int getKills() {
         return kills;
+    }
+
+    public void setKills(int kills) {
+        this.kills = kills;
+    }
+
+    public List<Job> getJobs() {
+        return jobs;
+    }
+
+    public void setJobs(List<Job> jobs) {
+        this.jobs = jobs;
     }
 }
