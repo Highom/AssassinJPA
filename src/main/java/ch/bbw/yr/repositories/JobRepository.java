@@ -52,6 +52,7 @@ public class JobRepository {
         try {
             em.getTransaction().begin();
             em.persist(emp);
+            em.flush();
             em.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -78,6 +79,7 @@ public class JobRepository {
             Object Job = em.find(Job.class, emp.getId());
             if (Job != null) {
                 em.merge(Job);
+                em.flush();
             }
             em.getTransaction().commit();
         } catch (Exception e) {
@@ -92,6 +94,7 @@ public class JobRepository {
             Object Job = em.find(Job.class, id);
             if (Job != null) {
                 em.remove(Job);
+                em.flush();
             }
             em.getTransaction().commit();
         } catch (Exception e) {
