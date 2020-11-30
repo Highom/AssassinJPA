@@ -52,7 +52,7 @@ public class JobRepository {
         try {
             em.getTransaction().begin();
             em.persist(emp);
-            em.flush();
+            flushAndClear();
             em.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -79,7 +79,7 @@ public class JobRepository {
             Object Job = em.find(Job.class, emp.getId());
             if (Job != null) {
                 em.merge(Job);
-                em.flush();
+                flushAndClear();
             }
             em.getTransaction().commit();
         } catch (Exception e) {
@@ -94,12 +94,17 @@ public class JobRepository {
             Object Job = em.find(Job.class, id);
             if (Job != null) {
                 em.remove(Job);
-                em.flush();
+                flushAndClear();
             }
             em.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
             em.getTransaction().rollback();
         }
+    }
+
+    private void flushAndClear() {
+        em.flush();
+        em.clear();
     }
 }

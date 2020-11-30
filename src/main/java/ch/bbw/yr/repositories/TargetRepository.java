@@ -53,7 +53,7 @@ public class TargetRepository {
         try {
             em.getTransaction().begin();
             em.persist(emp);
-            em.flush();
+            flushAndClear();
             em.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -80,7 +80,7 @@ public class TargetRepository {
             Object Target = em.find(Target.class, emp.getId());
             if (Target != null) {
                 em.merge(Target);
-                em.flush();
+                flushAndClear();
             }
             em.getTransaction().commit();
         } catch (Exception e) {
@@ -95,12 +95,17 @@ public class TargetRepository {
             Object target = em.find(Target.class, id);
             if (target != null) {
                 em.remove(target);
-                em.flush();
+                flushAndClear();
             }
             em.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
             em.getTransaction().rollback();
         }
+    }
+
+    private void flushAndClear() {
+        em.flush();
+        em.clear();
     }
 }

@@ -51,7 +51,7 @@ public class AssassinRepository {
         try {
             em.getTransaction().begin();
             em.persist(emp);
-            em.flush();
+            flushAndClear();
             em.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -78,7 +78,7 @@ public class AssassinRepository {
             Object Assassin = em.find(Assassin.class, emp.getId());
             if (Assassin != null) {
                 em.merge(Assassin);
-                em.flush();
+                flushAndClear();
             }
             em.getTransaction().commit();
         } catch (Exception e) {
@@ -93,12 +93,17 @@ public class AssassinRepository {
             Object Assassin = em.find(Assassin.class, id);
             if (Assassin != null) {
                 em.remove(Assassin);
-                em.flush();
+                flushAndClear();
             }
             em.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
             em.getTransaction().rollback();
         }
+    }
+
+    private void flushAndClear() {
+        em.flush();
+        em.clear();
     }
 }

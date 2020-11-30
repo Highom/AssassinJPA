@@ -50,7 +50,7 @@ public class WeaponRepository {
         try {
             em.getTransaction().begin();
             em.persist(emp);
-            em.flush();
+            flushAndClear();
             em.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -77,7 +77,7 @@ public class WeaponRepository {
             Object weapon = em.find(Weapon.class, emp.getId());
             if (weapon != null) {
                 em.merge(weapon);
-                em.flush();
+                flushAndClear();
             }
             em.getTransaction().commit();
         } catch (Exception e) {
@@ -92,12 +92,17 @@ public class WeaponRepository {
             Object weapon = em.find(Weapon.class, id);
             if (weapon != null) {
                 em.remove(weapon);
-                em.flush();
+                flushAndClear();
             }
             em.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
             em.getTransaction().rollback();
         }
+    }
+
+    private void flushAndClear() {
+        em.flush();
+        em.clear();
     }
 }
