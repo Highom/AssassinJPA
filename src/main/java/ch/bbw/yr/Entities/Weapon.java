@@ -51,4 +51,13 @@ public class Weapon {
     public void setLethality(int lethality) {
         this.lethality = lethality;
     }
+
+    @Override
+    public String toString() {
+        return "Weapon{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", lethality=" + lethality +
+                '}';
+    }
 }

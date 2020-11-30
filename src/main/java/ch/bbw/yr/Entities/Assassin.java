@@ -65,4 +65,14 @@ public class Assassin {
     public void setJobs(List<Job> jobs) {
         this.jobs = jobs;
     }
+
+    @Override
+    public String toString() {
+        return "Assassin{" +
+                "id=" + id +
+                ", codename='" + codename + '\'' +
+                ", kills=" + kills +
+                ", jobs=" + jobs +
+                '}';
+    }
 }

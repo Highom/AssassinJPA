@@ -65,4 +65,14 @@ public class Job {
     public void setWeaponsUsed(List<Weapon> weaponsUsed) {
         this.weaponsUsed = weaponsUsed;
     }
+
+    @Override
+    public String toString() {
+        return "Job{" +
+                "id=" + id +
+                ", assassin=" + assassin +
+                ", target=" + target +
+                ", weaponsUsed=" + weaponsUsed +
+                '}';
+    }
 }
