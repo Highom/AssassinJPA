@@ -10,7 +10,8 @@ import javax.persistence.*;
 @Table(name="target")
 @NamedQuery(name="Target.findAll", query="SELECT e FROM Target e")
 public class Target {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "id", unique = true)
     private int id;
 

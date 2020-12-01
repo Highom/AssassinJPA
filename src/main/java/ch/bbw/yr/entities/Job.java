@@ -12,7 +12,8 @@ import java.util.List;
 @Table(name="job")
 @NamedQuery(name="Job.findAll", query="SELECT e FROM Job e")
 public class Job {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "id", unique = true)
     private int id;
 
