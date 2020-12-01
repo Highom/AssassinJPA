@@ -4,8 +4,7 @@
  */
 package ch.bbw.yr.repositories;
 
-import ch.bbw.yr.Entities.Target;
-import ch.bbw.yr.Entities.Weapon;
+import ch.bbw.yr.entities.Target;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

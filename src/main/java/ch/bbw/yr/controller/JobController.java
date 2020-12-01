@@ -2,12 +2,12 @@
  * @Author: Yannick Ruck
  * @Date: 14/11/2020
  */
-package ch.bbw.yr.Controller;
+package ch.bbw.yr.controller;
 
-import ch.bbw.yr.Entities.Assassin;
-import ch.bbw.yr.Entities.Job;
-import ch.bbw.yr.Entities.Target;
-import ch.bbw.yr.Entities.Weapon;
+import ch.bbw.yr.entities.Assassin;
+import ch.bbw.yr.entities.Job;
+import ch.bbw.yr.entities.Target;
+import ch.bbw.yr.entities.Weapon;
 import ch.bbw.yr.repositories.AssassinRepository;
 import ch.bbw.yr.repositories.JobRepository;
 import ch.bbw.yr.repositories.TargetRepository;

@@ -2,9 +2,9 @@
  * @Author: Yannick Ruck
  * @Date: 15/11/2020
  */
-package ch.bbw.yr.Controller;
+package ch.bbw.yr.controller;
 
-import ch.bbw.yr.Entities.Weapon;
+import ch.bbw.yr.entities.Weapon;
 import ch.bbw.yr.repositories.WeaponRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

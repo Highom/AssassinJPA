@@ -2,9 +2,9 @@
  * @Author: Yannick Ruck
  * @Date: 15/11/2020
  */
-package ch.bbw.yr.Controller;
+package ch.bbw.yr.controller;
 
-import ch.bbw.yr.Entities.Target;
+import ch.bbw.yr.entities.Target;
 import ch.bbw.yr.repositories.TargetRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

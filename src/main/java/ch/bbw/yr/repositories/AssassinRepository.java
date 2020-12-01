@@ -5,7 +5,7 @@
 package ch.bbw.yr.repositories;
 
 
-import ch.bbw.yr.Entities.Assassin;
+import ch.bbw.yr.entities.Assassin;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

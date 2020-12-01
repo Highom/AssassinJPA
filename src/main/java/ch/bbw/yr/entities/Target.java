@@ -2,7 +2,7 @@
  * @Author: Yannick Ruck
  * @Date: 13/11/2020
  */
-package ch.bbw.yr.Entities;
+package ch.bbw.yr.entities;
 
 import javax.persistence.*;
 
