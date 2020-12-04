@@ -61,6 +61,8 @@
 							<th>Assassin</th>
 							<th>Target</th>
 							<th>Weapons</th>
+							<th>Edit</th>
+							<th>Delete</th>
 						</tr>
 						</thead>
 						<tbody>
@@ -68,6 +70,12 @@
 							<td th:text="${job.assasin}"></td>
 							<td th:text="${job.target}"></td>
 							<td th:text="${job.weapons}"></td>
+							<td>
+								<a class="btn btn-info" th:href="@{/jobs/edit?id={id}(id=${job.id})}">Edit</a>
+							</td>
+							<td>
+								<a class="btn btn-danger" th:href="@{/jobs/delete?id={id}(id=${job.id})}">Delete</a>
+							</td>
 						</tr>
 						</tbody>
 					</table>
